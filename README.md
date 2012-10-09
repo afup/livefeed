@@ -1,7 +1,7 @@
 afup_livefeed
 =============
 
-
+    $> brew install node
     $> npm install ntwitter
     $> node app
 
