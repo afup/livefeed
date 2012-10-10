@@ -1,72 +1,199 @@
-<!DOCTYPE HTML>
-<head>
-<meta charset="utf-8">
-<style type="text/css" media="screen">
-body {
-    font-size: 14px;
-    font-family: Helvetica, Arial, sans-serif;
-}
-ul#tweets {
-    font-size: 18px;
-    list-style-type: none; 
-}
-ul#tweets li {
-    margin: 10px auto;
-}
-span.author {
-    font: bold;
-    color: #7666DA;
-}
-span.text a {
-    color: #7666DA;
-}
-</style>
-<link rel="shortcut icon" href="http://afup.org/templates/phptournantes2012/medias/images/favicon.ico" />
-<link href="//netdna.bootstrapcdn.com/twitter-bootstrap/2.1.1/css/bootstrap-combined.min.css" rel="stylesheet">
+<!doctype html>
+<html lang="fr">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width">
+        <meta name="keywords" content="PHP Tour Nantes 2012, les meilleurs experts PHP à Lille" lang="fr" />
+        <link rel="stylesheet" href="http://www.afup.org/templates/phptournantes2012/medias/css/style.css" type="text/css" media="all" />
+        <link rel="stylesheet" href="http://www.afup.org/templates/phptournantes2012/medias/css/style_print.css" type="text/css" media="print" />
+        <link rel="stylesheet" href="http://www.afup.org/templates/phptournantes2012/medias/css/jquery.tooltip.css" type="text/css" media="screen" />
+        <title>LiveFeed - PHP Tour Nantes 2012</title>
 
-<title> LiveFeed PHP Tour </title>
+        <script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1.8.0/jquery.min.js" type="text/javascript"></script>
+        <script type="text/javascript" src="http://www.afup.org/templates/phptournantes2012/medias/js/jquery.innerfade.js"></script>
+        <script type="text/javascript" src="http://www.afup.org/templates/phptournantes2012/medias/js/jquery.tooltip.min.js"></script>
+        <script type="text/javascript" src="http://www.afup.org/templates/phptournantes2012/medias/js/jquery.dimensions.js"></script>
+        <script type="text/javascript" src="http://www.afup.org/templates/phptournantes2012/medias/js/jquery.bgiframe.js"></script>
+        <link rel="shortcut icon" href="http://www.afup.org/templates/phptournantes2012/medias/images/favicon.ico" />
+        <!--[if lt IE 9]>
+            <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+        <![endif]-->
+    
+    <style type="text/css" media="screen">
+    body {
+        font-size: 14px;
+        font-family: Helvetica, Arial, sans-serif;
+    }
+    ul#tweets {
+        font-size: 18px;
+        list-style-type: none; 
+    }
+    ul#tweets li {
+        margin: 10px auto;
+    }
+    span.author {
+        font: bold;
+        color: #7666DA;
+    }
+    span.text a {
+        color: #7666DA;
+    }
+    </style>
 
-</head>
-<body>
+    <link href="//netdna.bootstrapcdn.com/twitter-bootstrap/2.1.1/css/bootstrap-combined.min.css" rel="stylesheet">
 
-<h1>Livefeed Afup</h1>
 
-<div class="row-fluid">
-    <div class="span9">
-        <ul id="tweets">
-        </ul>
-    </div>
-    <div class="span3">
-        <!-- logo et sponsoring -->
-        <img src="http://afup.org/templates/phptournantes2012/medias/images/logo.png" />
+    </head>
+    <body>
 
-        <div class="bloc-sidebar-content">
-            <div class="title">
-                <h2>Sponsors</h2>
+
+
+    <div class="path-content">
+
+            <header class="header">
+                <div class="header-content clearfix">
+
+                    <h1 class="logo"><a href="index.php">PHP Tour</a></h1>
+
+                    <div class="description">
+                        <h1>Le cycle de conférences de l'<a href="http://www.afup.org/" target="_blank">AFUP</a></h1>
+                        <p>Rejoignez le cycle de conférences de l'AFUP, le PHP Tour ! La deuxième édition de cet événement annuel itinérant aura lieu les 29 et 30 novembre 2012 au Centre de Communication de l'Ouest à Nantes.</p>
+                    </div>
+
+                    <div class="clear"></div>
+                </div>
+            </header> <!-- End Header -->
+
+                        <div class="navigation-content clearfix">
+                <nav class="navigation">
+                    <ul class="clearfix">
+                        <li class=""><a class="home" href="index.php">Accueil</a></li>
+                        <li><a class="inscription" href="inscription.php">Tarifs/Inscription</a></li>
+                        <li><a class="programme" href="deroulement.php">Programme</a>
+                            <ul class="lvl-1">
+                                <li><a href="conferenciers.php">Conférenciers</a></li>
+                                <li><a href="sessions.php">Sessions</a></li>
+                                <!--li><a href="resumes.php">Résumés</a></li-->
+                            </ul>
+                        </li>
+                        <li><a class="sponsor" href="sponsors.php">Sponsors</a></li>
+                        <li><a class="acces" href="acces.php">Accès</a></li>
+                        <li><a class="contact" href="buzz.php">Buzz</a></li>
+                        <li><a class="contact" href="contact.php">Contact</a></li>
+                    </ul>
+                </nav>
+
+                <div class="social-link">
+                    <ul class="clearfix">
+                        <li><a class="btn-twitter" href="http://twitter.com/afup" target="_blank" title="Suivez-nous sur twitter">Twitter</a></li>
+                        <li><a class="btn-facebook" href="http://www.facebook.com/pages/AFUP/148661101838283" target="_blank" title="Devenez Fan sur Facebook">Facebook</a></li>
+                        <li><a class="btn-flickr" href="http://www.flickr.com/groups/forumphp/" target="_blank" title="Publiez vos photos sur Flickr">Flickr</a></li>
+                    </ul>
+                </div>
+            </div> <!-- End Navigation -->
+
+
+            <!-- Start Contenu -->
+            <div class="content clearfix">
+                <div class="left-container">
+                    <article class="news">
+                        <div class="title">
+                            <h2>En ce moment sur twitter</h2>
+                        </div>
+                        <div class="news-txt clearfix">
+                            <ul id="tweets"></ul> <!-- TWEEEETS --> 
+                        </div>
+                    </article>    
+                </div>
+
+            <aside class="sidebar">
+
+                <div class="bloc-sidebar">
+                    <div class="title">
+                        <p><a href="sponsors.php">Sponsors</a></p>
+                    </div>
+                    <div class="bloc-sidebar-content">
+                        <div class="title">
+                            <p>Sponsors</p>
+                        </div>
+                                                                                                    <p>"Argent"</p>
+                                                        <a class="withTooltip" href="http://www.oxalide.com/" target="_blank">
+                                <img src="http://www.afup.org/templates/phptournantes2012//images/oxalide.png" alt="Logo Oxalide"></a>
+                                                                                                        <p>"Bronze"</p>
+                                                        <a class="withTooltip" href="http://www.vaconsulting.lu/" target="_blank">
+                                <img src="http://www.afup.org/templates/phptournantes2012//images/vaconsulting150.png" alt="Logo VA Consulting"></a>
+                                                        <a class="withTooltip" href="http://www.windowsazure.com/fr-fr/" target="_blank">
+                                <img src="http://www.afup.org/templates/phptournantes2012//images/logo-azure.jpg" alt="Logo Microsoft Windows Azure"></a>
+                     </div>
+                </div>
+
+                <div class="bloc-sidebar">
+                    <div class="title">
+                        <p>Organisateurs</p>
+                    </div>
+                    <div class="bloc-sidebar-content">
+                        <a href="http://www.afup.org/" target="_blank"><img src="http://www.afup.org/templates/phptournantes2012//medias/images/logo_afup.png" alt="Logo Afup"></a>
+                        <a href="http://www.php.net/" target="_blank"><img src="http://www.afup.org/templates/phptournantes2012//medias/images/logo_php.png" alt="Logo Php"></a>
+                    </div>
+                </div>
+
+                                <div class="bloc-sidebar">
+                    <div class="title">
+                        <p><a href="sponsors.php">Partenaires</a></p>
+                    </div>
+                    <div class="bloc-sidebar-content">
+                                                <a class="withTooltip" href="http://www.editions-eyrolles.com/" target="_blank">
+                            <img src="http://www.afup.org/templates/phptournantes2012//images/logo_eyrolles.gif" alt="Logo Eyrolles"></a>
+                                                <a class="withTooltip" href="http://www.editions-eni.fr/" target="_blank">
+                            <img src="http://www.afup.org/templates/phptournantes2012//images/logo_eni.jpg" alt="Logo ENI"></a>
+                                            </div>
+                </div>
+                
+            </aside>
+
+             </div><!-- End Contenu -->
+
+            <footer class="footer">
+            <div class="footer-content clearfix">
+                <div class="location">
+                    <div class="map">
+                        <a href="acces.php"><img src ="http://www.afup.org/templates/phptournantes2012//medias/images/map.jpg" alt="Place de Bretagne, 44000 Nantes"></a>
+                    </div>
+                    <h4>PHP Tour</h4>
+                    <p>
+                        29 et 30 novembre 2012<br/>
+                        CCO<br/>
+                        44000 Nantes
+                    </p>
+                </div>
+
+                <div class="with-support">
+                    <!--
+                    <p>Avec le soutien de :</p>
+                    <img src="http://www.afup.org/templates/phptournantes2012//medias/images/logo-support.jpg" alt="" />
+                    -->
+                </div>
+
+                <p class="infos">Copyright © 2012 <a href="http://www.afup.org/" target="_blank">AFUP</a> |  Webdesign : <a href="http://www.mr-rayures.com" title="Webdesigner freelance" target="_blank">MrRayures</a> | Développement : <a href="http://www.noparking.net/" title="" target="_blank">No Parking</a> | Hébergement :  <a href="http://www.alterway.fr/hosting/" target="_blank">Alter Way Hosting</a></p>
+
             </div>
-            <p>"Argent"</p>
-                <img src="http://afup.org/templates/phptournantes2012//images/oxalide.png" alt="Logo Oxalide">
-            <p>"Bronze"</p>
-                <img src="http://afup.org/templates/phptournantes2012//images/vaconsulting150.png" alt="Logo VA Consulting">
-                <img src="http://afup.org/templates/phptournantes2012//images/logo-azure.jpg" alt="Logo Microsoft Windows Azure">
-        </div>
-    </div>
-</div>
+        </footer><!-- End Footer -->
+
+  </div><!-- path-content -->
 
 
-<script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.0/jquery.min.js" type="text/javascript"></script>
-<script src="/socket.io/socket.io.js"></script>
-<script>
+<script type="text/javascript" src="/socket.io/socket.io.js"></script>
+<script type="text/javascript">
 // traitement des datas
 function replaceURLWithHTMLLinks(text) {
     var exp = /(\b(https?|ftp|file):\/\/[-A-Z0-9+&@#\/%?=~_|!:,.;]*[-A-Z0-9+&@#\/%=~_|])/ig;
     return text.replace(exp,"<a href='$1'>$1</a>"); 
 }
 </script>
-<script>
+<script type="text/javascript">
   var socket = io.connect('http://127.0.0.1:8080/');
   socket.on('tweet', function (data) {
-    //console.log(data);
+    console.log(data);
     $('<li></li>').html(
         "<div class='row-fluid'>" +
         "<div class='span1'><img class='img' src='" + data.user_image + "' /></div>" +
