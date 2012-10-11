@@ -35,7 +35,7 @@ var twit = new twitter({
   access_token_secret: access_token_secret
 });
 
-twit.stream('statuses/filter', {track: ['phptour', 'afup', 'phptournantes', 'Nantes'] }, function(stream) {
+twit.stream('statuses/filter', {track: ['phptour', 'afup', 'phptournantes'] }, function(stream) {
   stream.on('data', function (data) {
     var tweet_content = Array();
     if (data.text)
