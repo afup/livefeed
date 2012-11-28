@@ -288,7 +288,6 @@ function replaceURLWithHTMLLinks(text) {
 <script type="text/javascript">
   var socket = io.connect('/');
   socket.on('tweet', function (data) {
-    console.log(data);
     $('<li></li>').html(
         "<div class='row-fluid'>" +
         "<div class='span1'><img class='img' src='" + data.user_image + "' /></div>" +
